@@ -13,27 +13,28 @@
 <h3> The guestbook</h3>
 <form method="post">
 
-    <b> Enter your name:</b>
+    <b>Name:</b>
     <label>
         <input name="name" size="30">
     </label> <br>
-
-
-    <h3> Comments below:</h3>
-    <b>Title</b>
+    <b>Title:</b>
     <label>
         <input name="title">
     </label>
+    <h3>Message:</h3>
+
     <label>
         <textarea name="comment" ROWS=6 COLS=60></textarea>
     </label>
-    <p>
-        <b>Press to send</b>
-        <br>
-    </p>
 
     <input type=submit value="Send">
 </form>
+<?php foreach ($dateOrderPosts as $post) :?>
+<p>Title: <strong><?php echo $post['title']?></strong></p>
+<p>Message: <strong><?php echo $post['content']?></strong></p>
+<p>Posted on: <strong><?php echo $post['date']?></strong></p>
+<p>Author: <strong><?php echo $post['name']?></strong></p>
+<?php endforeach?>
 
 <div id="interface">
 </div>

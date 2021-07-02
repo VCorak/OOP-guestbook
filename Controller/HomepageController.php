@@ -27,8 +27,8 @@ class HomepageController {
         $contentInput = fixTags($_POST["content"]);
         $dateInput = date('m/d/Y h:i:s a', time());
 
-        $input = new Post($nameInput, $titleInput, $contentInput, $dateInput);
-        $inputArray = $input->createInputArray($nameInput, $titleInput, $contentInput, $dateInput);
+        $input = new Posts($nameInput, $titleInput, $contentInput, $dateInput);
+        $inputArray = $input->createPostsArray($nameInput, $titleInput, $contentInput, $dateInput);
 
         $book = new Guestbook();
 
@@ -43,12 +43,12 @@ class HomepageController {
         $toJSON = $book->loaderDecoder();
 
         // just show first 20 posts
-        while(count($toJSON) > 20) {
+       /* while (count($toJSON) > 20) {
             array_shift($toJSON);
-        }
+        }*/
 
         // first show new posts
-        $dateOrderPosts = array_reverse($toJSON);
+//        $dateOrderPosts = array_reverse($toJSON);
 
         require 'View/Homepage.php';
             }
