@@ -16,7 +16,7 @@
     <b>Name:</b>
     <label>
         <input name="name" size="30">
-    </label> <br>
+    </label> </br>
     <b>Title:</b>
     <label>
         <input name="title">
@@ -30,7 +30,7 @@
     <input type=submit value="Send">
 </form>
 <?php foreach ($dateOrderPosts as $post) :?>
-<p><strong>Title</strong><?php echo $post['title']?></p>
+<p><strong>Title: </strong><?php echo $post['title']?></p>
 <p><strong>Message:</strong <?php echo $post['content']?>></p>
 <p><strong>Posted on:</strong> <?php echo $post['date']?></p>
 <p><strong>Author:</strong><?php echo $post['name']?></p>
