@@ -21,14 +21,14 @@ class HomepageController {
             $text = htmlspecialchars($text);
             return $text;
         }
-
-        $nameInput = fixTags($_POST["name"]);
         $titleInput = fixTags($_POST["title"]);
-        $commentInput = fixTags($_POST["comment"]);
         $dateInput = date('m/d/Y h:i:s a', time());
+        $commentInput = fixTags($_POST["comment"]);
+        $nameInput = fixTags($_POST["name"]);
 
-        $input = new Posts($nameInput, $titleInput, $commentInput, $dateInput);
-        $inputArray = $input->createPostsArray($nameInput, $titleInput, $commentInput, $dateInput);
+
+        $input = new Posts( $titleInput, $dateInput, $commentInput, $nameInput,);
+        $inputArray = $input->createPostsArray($titleInput, $dateInput, $commentInput, $nameInput);
 
         $book = new PostLoader();
 
