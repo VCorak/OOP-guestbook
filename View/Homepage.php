@@ -30,10 +30,10 @@
     <input type=submit value="Send">
 </form>
 <?php foreach ($dateOrderPosts as $post) :?>
-<p>Title: <strong><?php echo $post['title']?></strong></p>
-<p>Message: <strong><?php echo $post['content']?></strong></p>
-<p>Posted on: <strong><?php echo $post['date']?></strong></p>
-<p>Author: <strong><?php echo $post['name']?></strong></p>
+<p><strong>Title</strong><?php echo $post['title']?></p>
+<p><strong>Message:</strong <?php echo $post['content']?>></p>
+<p><strong>Posted on:</strong> <?php echo $post['date']?></p>
+<p><strong>Author:</strong><?php echo $post['name']?></p>
 <?php endforeach?>
 
 <div id="interface">

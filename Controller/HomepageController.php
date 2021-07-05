@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require "Model/Guestbook.php";
+require "Model/PostLoader.php";
 require "Model/Posts.php";
 
 class HomepageController {
@@ -13,7 +13,7 @@ class HomepageController {
         if (!isset($_POST["name"])) {
             $_POST["name"] = "name";
             $_POST["title"] = "title";
-            $_POST["content"] = "content";
+            $_POST["comment"] = "comment";
         }
 
         function fixTags($text) {
@@ -24,31 +24,32 @@ class HomepageController {
 
         $nameInput = fixTags($_POST["name"]);
         $titleInput = fixTags($_POST["title"]);
-        $contentInput = fixTags($_POST["content"]);
+        $commentInput = fixTags($_POST["comment"]);
         $dateInput = date('m/d/Y h:i:s a', time());
 
-        $input = new Posts($nameInput, $titleInput, $contentInput, $dateInput);
-        $inputArray = $input->createPostsArray($nameInput, $titleInput, $contentInput, $dateInput);
+        $input = new Posts($nameInput, $titleInput, $commentInput, $dateInput);
+        $inputArray = $input->createPostsArray($nameInput, $titleInput, $commentInput, $dateInput);
 
-        $book = new Guestbook();
+        $book = new PostLoader();
 
-        if (!isset($_SESSION["guestBook"])) {
-            $_SESSION["guestBook"] = $book;
+        if (!isset($_SESSION["postLoader"])) {
+            $_SESSION["postLoader"] = $book;
         } else {
-            $book = $_SESSION["guestBook"];
+            $book = $_SESSION["postLoader"];
         }
 
-        $book->pushToGuestbookArray($inputArray);
-        $guestBookArray = $book->getAllPosts();
+        $book->pushToPostLoaderArray($inputArray);
+        $postLoaderArray = $book->getAllPosts();
+        $book->postsLoader($postLoaderArray);
         $toJSON = $book->loaderDecoder();
 
         // just show first 20 posts
-       /* while (count($toJSON) > 20) {
+       while (count($toJSON) > 20) {
             array_shift($toJSON);
-        }*/
+        }
 
         // first show new posts
-//        $dateOrderPosts = array_reverse($toJSON);
+       $dateOrderPosts = array_reverse($toJSON);
 
         require 'View/Homepage.php';
             }

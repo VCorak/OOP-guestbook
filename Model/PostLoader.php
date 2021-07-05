@@ -1,15 +1,15 @@
 <?php
 
-class Guestbook {
+class PostLoader {
 
-    private $guestbookArray = [];
+    private $postLoaderArray = [];
 
     public function getAllPosts() : array {
-        return $this->guestbookArray;
+        return $this->postLoaderArray;
     }
 
-    public function pushToGuestbookArray($session) {
-        $this->guestbookArray[] = $session;
+    public function pushToPostLoaderArray($session) {
+        $this->postLoaderArray[] = $session;
     }
 
     public function postsLoader($array) {
