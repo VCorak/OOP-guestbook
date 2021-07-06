@@ -29,7 +29,7 @@ class Posts {
     {
         return $this->content;
     }
-    
+
     public function getName()
     {
         return $this->name;

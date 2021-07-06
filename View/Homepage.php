@@ -12,17 +12,15 @@
 <body>
 <h3> The guestbook</h3>
 <form method="post">
-
-    <b>Name:</b>
+    <h3>Name:</h3>
     <label>
-        <input name="name" size="30">
+        <input name="name" size="15">
     </label> </br>
-    <b>Title:</b>
+    <h3>Title:</h3>
     <label>
-        <input name="title">
+        <input name="title" size="30">
     </label>
     <h3>Message:</h3>
-
     <label>
         <textarea name="comment" ROWS=6 COLS=60></textarea>
     </label>
@@ -31,9 +29,9 @@
 </form>
 <?php foreach ($dateOrderPosts as $post) :?>
 <p><strong>Title: </strong><?php echo $post['title']?></p>
-<p><strong>Message:</strong <?php echo $post['content']?>></p>
-<p><strong>Posted on:</strong> <?php echo $post['date']?></p>
-<p><strong>Author:</strong><?php echo $post['name']?></p>
+<p><strong>Message: </strong <?php echo $post['content']?>></p>
+<p><strong>Posted on: </strong> <?php echo $post['date']?></p>
+<p><strong>Author: </strong><?php echo $post['name']?></p>
 <?php endforeach?>
 
 <div id="interface">

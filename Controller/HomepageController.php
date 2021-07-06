@@ -13,7 +13,7 @@ class HomepageController {
         if (!isset($_POST["name"])) {
             $_POST["name"] = "name";
             $_POST["title"] = "title";
-            $_POST["comment"] = "comment";
+            $_POST["content"] = "comment";
         }
 
         function fixTags($text) {
@@ -22,13 +22,13 @@ class HomepageController {
             return $text;
         }
         $titleInput = fixTags($_POST["title"]);
-        $dateInput = date('m/d/Y h:i:s a', time());
-        $commentInput = fixTags($_POST["comment"]);
+        $dateInput = date("l jS \of F Y H:i:s a");
+        $contentInput = fixTags($_POST["comment"]);
         $nameInput = fixTags($_POST["name"]);
 
 
-        $input = new Posts( $titleInput, $dateInput, $commentInput, $nameInput,);
-        $inputArray = $input->createPostsArray($titleInput, $dateInput, $commentInput, $nameInput);
+        $input = new Posts( $titleInput, $dateInput, $contentInput, $nameInput,);
+        $inputArray = $input->createPostsArray($titleInput, $dateInput, $contentInput, $nameInput);
 
         $book = new PostLoader();
 
